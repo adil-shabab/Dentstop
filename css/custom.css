@@ -128,6 +128,20 @@ body{
 .page-header-box ol .breadcrumb-item+.breadcrumb-item::before{
 	content: unset !important;
 }
+.chaaaa___ img{
+	width: 100%;
+	border-radius: 5px;
+}
+.chaaaa___ span{
+	margin-bottom: 10px;
+}
+.chaaaa___ h3{
+	margin-bottom: 25px;
+}
+.chaaaa___{
+	display: flex;
+	align-items: center;
+}
 .image-anime{
 	position: relative;
 	overflow: hidden;
