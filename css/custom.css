@@ -71,6 +71,10 @@ p{
 	margin-bottom: 1.6em;
 }
 
+.tt__change{
+	text-align: right;
+	padding-right: 32px;
+}
 h1,
 h2,
 h3,
@@ -4797,6 +4801,10 @@ header.main-header .header-sticky.active{
 	
 	.section-title h1{
 		font-size: 32px;
+	}
+	.tt__change{
+		text-align: left;
+		padding-right: 0px;
 	}
 
 	.section-title h2{
