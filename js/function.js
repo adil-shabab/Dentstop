@@ -266,6 +266,7 @@
 		}
 	});
 
+
 	/* Contact form validation */
 	var $contactform = $("#contactForm");
 	$contactform.validator({focus: false}).on("submit", function (event) {
@@ -279,29 +280,25 @@
 		/* Ajax call to submit form */
 		$.ajax({
 			type: "POST",
-			url: "form-process.php",
+			url: "https://formspree.io/f/xzzbenpp",  // Replace with your Formspree endpoint
 			data: $contactform.serialize(),
-			success : function(text){
-				if (text == "success"){
-					formSuccess();
-				} else {
-					submitMSG(false,text);
-				}
+			dataType: "json",
+			success: function(response){
+				formSuccess();
+			},
+			error: function(response){
+				submitMSG(false, "An error occurred. Please try again.");
 			}
 		});
 	}
 
 	function formSuccess(){
 		$contactform[0].reset();
-		submitMSG(true, "Message Sent Successfully!")
+		submitMSG(true, "Message Sent Successfully!");
 	}
 
 	function submitMSG(valid, msg){
-		if(valid){
-			var msgClasses = "h3 text-success";
-		} else {
-			var msgClasses = "h3 text-danger";
-		}
+		var msgClasses = valid ? "h3 text-success mt-3" : "h3 text-danger";
 		$("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
 	}
 	/* Contact form validation end */
