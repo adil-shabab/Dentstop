@@ -135,6 +135,8 @@ body{
 .chaaaa___ img{
 	width: 100%;
 	border-radius: 5px;
+	max-height: 405px;
+	object-fit: cover;
 }
 .chaaaa___ span{
 	margin-bottom: 10px;
