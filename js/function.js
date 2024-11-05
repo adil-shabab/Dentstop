@@ -280,7 +280,7 @@
 		/* Ajax call to submit form */
 		$.ajax({
 			type: "POST",
-			url: "https://formspree.io/f/xzzbenpp",  // Replace with your Formspree endpoint
+			url: "https://formspree.io/f/xjkvwvll",  // Replace with your Formspree endpoint
 			data: $contactform.serialize(),
 			dataType: "json",
 			success: function(response){
