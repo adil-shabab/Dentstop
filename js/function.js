@@ -267,42 +267,47 @@
 	});
 
 
-	/* Contact form validation */
-	var $contactform = $("#contactForm");
-	$contactform.validator({focus: false}).on("submit", function (event) {
-		if (!event.isDefaultPrevented()) {
-			event.preventDefault();
-			submitForm();
-		}
-	});
+    // Contact form validation
+    var $contactform = $("#contactForm");
+    $contactform.validator({ focus: false }).on("submit", function (event) {
+        if (!event.isDefaultPrevented()) {
+            event.preventDefault();
+            submitForm();
+        }
+    });
 
-	function submitForm(){
-		/* Ajax call to submit form */
-		$.ajax({
-			type: "POST",
-			url: "https://formspree.io/f/xjkvwvll",  // Replace with your Formspree endpoint
-			data: $contactform.serialize(),
-			dataType: "json",
-			success: function(response){
-				formSuccess();
-			},
-			error: function(response){
-				submitMSG(false, "An error occurred. Please try again.");
-			}
-		});
-	}
+    function submitForm() {
+        // Ajax call to submit form
+        sendToWhatsApp();
+        formSuccess();
+    }
 
-	function formSuccess(){
-		$contactform[0].reset();
-		submitMSG(true, "Message Sent Successfully!");
-	}
+    function formSuccess() {
+        $contactform[0].reset();
+        submitMSG(true, "Message Sent Successfully!");
+    }
 
-	function submitMSG(valid, msg){
-		var msgClasses = valid ? "h3 text-success mt-3" : "h3 text-danger";
-		$("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
-	}
-	/* Contact form validation end */
+    function submitMSG(valid, msg) {
+        var msgClasses = valid ? "h3 text-success mt-3" : "h3 text-danger";
+        $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
+    }
 
+    function sendToWhatsApp() {
+        // Get form values
+        var fullname = $("#fullname").val();
+        var email = $("#email").val();
+        var phone = $("#phone").val();
+        var message = $("#message").val();
+
+        // Format WhatsApp message
+        var whatsappMessage = `Name: ${fullname}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
+        
+        // WhatsApp API link with message
+        var whatsappUrl = `https://wa.me/+917760627111?text=${encodeURIComponent(whatsappMessage)}`;
+        
+        // Open WhatsApp link in a new tab
+        window.open(whatsappUrl, "_blank");
+    }
 	/* Appointment form validation */
 	var $appointmentForm = $("#appointmentForm");
 	$appointmentForm.validator({focus: false}).on("submit", function (event) {
